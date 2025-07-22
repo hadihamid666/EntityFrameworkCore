@@ -1,6 +1,7 @@
 ﻿using EntityFrameworkCore.Data;
 using EntityFrameworkCore.Domain;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 // First we need an instance of context
 using var context = new FootballLeagueDbContext();
@@ -54,15 +55,15 @@ await context.SaveChangesAsync();*/
 
 //Update oparation
 
-var coach = await context.Coaches.FindAsync(9);
+/*var coach = await context.Coaches.FindAsync(9);
 coach.Name = "Himu Hadi 05";
 coach.CreatedDate = DateTime.Now;
 Console.WriteLine(context.ChangeTracker.DebugView.LongView);
 await context.SaveChangesAsync();
-Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+Console.WriteLine(context.ChangeTracker.DebugView.LongView);*/
 
 /*var coach1 = await context.Coaches.AsNoTracking().FirstOrDefaultAsync(x => x.Id == 10);
-coach1.Name = "Test 14";
+coach1.Name = "Test 16";
 coach1.CreatedDate = DateTime.Now;
 Console.WriteLine(context.ChangeTracker.DebugView.LongView);
 //context.Update(coach1);
@@ -72,11 +73,20 @@ await context.SaveChangesAsync();
 Console.WriteLine(context.ChangeTracker.DebugView.LongView);*/
 
 
-/*var coach3 = await context.Coaches.FirstOrDefaultAsync(x=>x.Id == 10);
-coach3.Name = "Test 10 ";
+/*var coach3 = await context.Coaches.FirstOrDefaultAsync(x => x.Id == 10);
+coach3.Name = "Test 15";
 coach3.CreatedDate = DateTime.Now;
-await context.SaveChangesAsync();*/
+Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+await context.SaveChangesAsync();
+Console.WriteLine(context.ChangeTracker.DebugView.LongView);*/
 
+//Delete oparation
+/*var coach = await context.Coaches.FindAsync(9);
+//context.Remove(coach);
+context.Entry(coach).State = EntityState.Deleted;
+Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+await context.SaveChangesAsync();
+Console.WriteLine(context.ChangeTracker.DebugView.LongView);*/
 
 // Select all teams
 // await GetAllTeams();
