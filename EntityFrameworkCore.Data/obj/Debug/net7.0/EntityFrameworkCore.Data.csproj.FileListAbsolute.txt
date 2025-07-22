@@ -1,0 +1,16 @@
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\bin\Debug\net7.0\EntityFrameworkCore.Data.deps.json
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\bin\Debug\net7.0\EntityFrameworkCore.Data.dll
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\bin\Debug\net7.0\EntityFrameworkCore.Data.pdb
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\bin\Debug\net7.0\EntityFrameworkCore.Domain.dll
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\bin\Debug\net7.0\EntityFrameworkCore.Domain.pdb
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.csproj.AssemblyReference.cache
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.GeneratedMSBuildEditorConfig.editorconfig
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.AssemblyInfoInputs.cache
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.AssemblyInfo.cs
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.csproj.CoreCompileInputs.cache
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFr.5ED7C83B.Up2Date
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.dll
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\refint\EntityFrameworkCore.Data.dll
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.pdb
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\ref\EntityFrameworkCore.Data.dll
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.sourcelink.json

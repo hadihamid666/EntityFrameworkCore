@@ -1,0 +1,7 @@
+//Scaffold-DbContext 'Server=localhost\SQLEXPRESS;Database=FootballLeague_EfCore;Trusted_Connection=True;TrustServerCertificate=True;' Microsoft.EntityFrameworkCore.SqlServer -ContextDir ModelContext -OutputDir Entities -Force
+
+<!--For Sqlite DB Using FootballLeageDbContext-->
+//Add-Migration FirstMigration
+//Update-Database
+//Add-Migration SeedingData_Into_Teams_Table -Context FootballLeageDbContext
+//Update-Database -Context FootballLeageDbContext // When using multiple context

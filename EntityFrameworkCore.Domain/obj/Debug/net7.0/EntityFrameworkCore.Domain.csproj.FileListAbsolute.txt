@@ -1,0 +1,12 @@
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Domain\bin\Debug\net7.0\EntityFrameworkCore.Domain.deps.json
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Domain\bin\Debug\net7.0\EntityFrameworkCore.Domain.dll
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Domain\bin\Debug\net7.0\EntityFrameworkCore.Domain.pdb
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Domain\obj\Debug\net7.0\EntityFrameworkCore.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Domain\obj\Debug\net7.0\EntityFrameworkCore.Domain.AssemblyInfoInputs.cache
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Domain\obj\Debug\net7.0\EntityFrameworkCore.Domain.AssemblyInfo.cs
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Domain\obj\Debug\net7.0\EntityFrameworkCore.Domain.csproj.CoreCompileInputs.cache
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Domain\obj\Debug\net7.0\EntityFrameworkCore.Domain.dll
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Domain\obj\Debug\net7.0\refint\EntityFrameworkCore.Domain.dll
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Domain\obj\Debug\net7.0\EntityFrameworkCore.Domain.pdb
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Domain\obj\Debug\net7.0\ref\EntityFrameworkCore.Domain.dll
+E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Domain\obj\Debug\net7.0\EntityFrameworkCore.Domain.sourcelink.json
