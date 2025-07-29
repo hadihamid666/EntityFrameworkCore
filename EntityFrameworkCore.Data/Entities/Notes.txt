@@ -3,5 +3,9 @@
 <!--For Sqlite DB Using FootballLeageDbContext-->
 //Add-Migration FirstMigration
 //Update-Database
-//Add-Migration SeedingData_Into_Teams_Table -Context FootballLeageDbContext
-//Update-Database -Context FootballLeageDbContext // When using multiple context
+//Add-Migration SeedingData_Into_Teams_Table -Context FootballLeagueDbContext
+//Remove-Migration -Context FootballLeagueDbContext
+//Update-Database -Context FootballLeagueDbContext // When using multiple context
+//Script-Migration -Context FootballLeagueDbContext // To generate SQL script for migration
+ //Get-Migration -Context FootballLeagueDbContext // To get the list of migrations
+// Update-Database -Context FootballLeagueDbContext -migration 20250723121842_AddMoreEntities // To update the database to a specific migration

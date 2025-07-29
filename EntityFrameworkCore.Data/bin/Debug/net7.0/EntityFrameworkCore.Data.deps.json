@@ -757,6 +757,9 @@
         }
       },
       "EntityFrameworkCore.Domain/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.20"
+        },
         "runtime": {
           "EntityFrameworkCore.Domain.dll": {
             "assemblyVersion": "1.0.0.0",
