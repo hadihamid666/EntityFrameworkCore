@@ -1,7 +1,6 @@
 ﻿using EntityFrameworkCore.Data;
 using EntityFrameworkCore.Domain;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 // First we need an instance of context
 using var context = new FootballLeagueDbContext();
@@ -121,7 +120,141 @@ Console.WriteLine(context.ChangeTracker.DebugView.LongView);*/
 //await ListVsQueryable();
 #endregion
 
+#region Related Data
+//Insert Record in Foreign Key
+/*var match = new Match
+{
+    AwayTeamId = 1,
+    HomeTeamId = 2,
+    HomeTeamScore = 0,
+    AwayTeamScore = 0,
+    Date = new DateTime(2025, 08, 15),
+    TicketPrice = 20,
+};
+await context.AddAsync(match);
+await context.SaveChangesAsync();
 
+*//* Incorrect reference data  - Will give error*//*
+var match1 = new Match
+{
+    AwayTeamId = 10,
+    HomeTeamId = 0,
+    HomeTeamScore = 0,
+    AwayTeamScore = 0,
+    Date = new DateTime(2025, 08, 15),
+    TicketPrice = 20,
+};
+await context.AddAsync(match1);
+await context.SaveChangesAsync();
+*/
+
+//Insert Parent/Child
+
+/*var team = new Team
+{
+    Name = "New Team",
+    Coach = new Coach
+    {
+        Name = "Johnson"
+    }
+};
+await context.AddAsync(team);
+await context.SaveChangesAsync();*/
+
+/*var coach = new Coach
+{
+    Name = "New Team2",
+    Team = new Team
+    {
+        Name = "Johnson2"
+    }
+};
+await context.AddAsync(coach);
+await context.SaveChangesAsync();*/
+
+/*var league = new League
+{
+    Name = "Serie A",
+    Teams = new List<Team>
+                {
+                    new Team
+                    {
+                        Name = "Juventus",
+                        Coach = new Coach
+                        {
+                            Name = "Juve Coach"
+                        },
+                    },
+                    new Team
+                    {
+                        Name = "AC Milan",
+                        Coach = new Coach
+                        {
+                            Name = "Milan Coach"
+                        },
+                    },
+                    new Team
+                    {
+                        Name = "AS Roma",
+                        Coach = new Coach
+                        {
+                            Name = "Roma Coach"
+                        },
+                    }
+                }
+};
+await context.AddAsync(league);
+await context.SaveChangesAsync();*/
+#endregion
+
+#region Eager Loding Data
+/*var leauges = await context.Leagues
+    .Include(q => q.Teams)
+        .ThenInclude(q => q.Coach)
+    .ToListAsync();
+
+foreach (var league in leauges)
+{
+    Console.WriteLine($"Leauge- {league.Name}");
+    foreach (var team in league.Teams)
+    {
+        Console.WriteLine($"{team.Name} - {team.Coach.Name}");
+    }
+}*/
+#endregion
+
+#region Explicit Loding Data
+/*var leauges = await context.FindAsync<League>(1);
+if (!leauges.Teams.Any())
+{
+    Console.WriteLine("Team have not been loaded");
+}
+
+context.Entry(leauges).Collection(q => q.Teams).Load();
+if (leauges.Teams.Any())
+{
+    foreach (var team in leauges.Teams)
+    {
+        Console.WriteLine($"{team.Name}");
+    }
+}*/
+#endregion
+
+#region Lezy Loding Data
+/*var leauges = await context.FindAsync<League>(1);
+foreach (var team in leauges.Teams)
+{
+    Console.WriteLine($"{team.Name}");
+}*/
+
+/*foreach (var leauges in context.Leagues)
+{
+    foreach (var team in leauges.Teams)
+    {
+        Console.WriteLine($"{team.Name}- {team.Coach.Name}");
+    }
+}*/
+#endregion
 async Task ListVsQueryable()
 {
     Console.WriteLine("Enter '1' for Team with Id 1 or '2' for teams that contain 'F.C.'");
@@ -162,9 +295,7 @@ async Task ListVsQueryable()
     {
         Console.WriteLine(t.Name);
     }
-
 }
-
 
 async Task NoTracking()
 {
@@ -396,4 +527,3 @@ class TeamInfo
     public int TeamId { get; set; }
     public string Name { get; set; }
 }
-

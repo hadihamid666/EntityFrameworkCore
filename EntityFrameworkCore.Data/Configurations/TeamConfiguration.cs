@@ -1,5 +1,6 @@
 ﻿using EntityFrameworkCore.Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,50 +12,46 @@ namespace EntityFrameworkCore.Data.Configurations
 {
     internal class TeamConfiguration : IEntityTypeConfiguration<Team>
     {
-        public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Team> builder)
+        public void Configure(EntityTypeBuilder<Team> builder)
         {
+            builder.HasIndex(q => q.Name).IsUnique();
+
+            builder.HasMany(m => m.HomeMatches)
+                .WithOne(q => q.HomeTeam)
+                .HasForeignKey(q => q.HomeTeamId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasMany(m => m.AwayMatches)
+                .WithOne(q => q.AwayTeam)
+                .HasForeignKey(q => q.AwayTeamId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
             builder.HasData(
                     new Team
                     {
                         Id = 1,
                         Name = "Tivoli Gardens F.C.",
-                        CreatedDate = DateTimeOffset.UtcNow.DateTime
+                        CreatedDate = new DateTime(2023, 09, 01),
+                        LeagueId = 1,
+                        CoachId = 1
                     },
                     new Team
                     {
                         Id = 2,
                         Name = "Waterhouse F.C.",
-                        CreatedDate = DateTimeOffset.UtcNow.DateTime
+                        CreatedDate = new DateTime(2023, 09, 01),
+                        LeagueId = 1,
+                        CoachId = 2
                     },
                     new Team
                     {
                         Id = 3,
                         Name = "Humble Lions F.C.",
-                        CreatedDate = DateTimeOffset.UtcNow.DateTime
-                    }
-                );
-        }
-    }
-
-    internal class LeagueConfiguration : IEntityTypeConfiguration<League>
-    {
-        public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<League> builder)
-        {
-            builder.HasData(
-                    new League
-                    {
-                        Id = 1,
-                        Name = "Jamaica Premiere League",
-                    },
-                    new League
-                    {
-                        Id = 2,
-                        Name = "English Premiere League",
-                    },
-                    new League
-                    {
-                        Id = 3,
-                        Name = "La Liga",
+                        CreatedDate = new DateTime(2023, 09, 01),
+                        LeagueId = 1,
+                        CoachId = 3
                     }
                 );
         }

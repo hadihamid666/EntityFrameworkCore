@@ -34,6 +34,7 @@ namespace EntityFrameworkCore.Data
             // Using SQLite
             //optionsBuilder.UseSqlite($"Data Source=FootballLeague_EfCore.db;");
             optionsBuilder.UseSqlite($"Data Source={DbPath}")
+                .UseLazyLoadingProxies()
                 .LogTo(Console.WriteLine, LogLevel.Information)
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors();

@@ -14,3 +14,21 @@ E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFramewor
 E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\refint\EntityFrameworkCore.Data.dll
 E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.pdb
 E:\Microservice_Training\EntityFrameworkCore _A_Full_Tour\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\ref\EntityFrameworkCore.Data.dll
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\bin\Debug\net7.0\EntityFrameworkCore.Data.deps.json
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\bin\Debug\net7.0\EntityFrameworkCore.Data.runtimeconfig.json
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\bin\Debug\net7.0\EntityFrameworkCore.Data.dll
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\bin\Debug\net7.0\EntityFrameworkCore.Data.pdb
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\bin\Debug\net7.0\EntityFrameworkCore.Domain.dll
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\bin\Debug\net7.0\EntityFrameworkCore.Domain.pdb
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.csproj.AssemblyReference.cache
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.GeneratedMSBuildEditorConfig.editorconfig
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.AssemblyInfoInputs.cache
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.AssemblyInfo.cs
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.csproj.CoreCompileInputs.cache
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.sourcelink.json
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFr.5ED7C83B.Up2Date
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.dll
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\refint\EntityFrameworkCore.Data.dll
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.pdb
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\EntityFrameworkCore.Data.genruntimeconfig.cache
+E:\Microservices\EntityFramework\Project\EntityFrameworkCore\EntityFrameworkCore.Data\obj\Debug\net7.0\ref\EntityFrameworkCore.Data.dll
