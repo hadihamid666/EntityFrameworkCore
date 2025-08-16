@@ -5,94 +5,21 @@ using Microsoft.EntityFrameworkCore;
 // First we need an instance of context
 using var context = new FootballLeagueDbContext();
 
+// Use to automatically apply all outstanding migrations
+// Carefully consider before using this approach in production.
+//await context.Database.MigrateAsync();
+
 // For SQLite Users to see where the Database file gets created
 //Console.WriteLine(context.DbPath);
 
+
 #region Read Queries
-
-//Simple Insert Statement
-var newCoach = new Coach
-{
-    Name = "Himu",
-    CreatedDate = DateTime.Now
-};
-
-//await context.Coaches.AddAsync(newCoach);
-//await context.SaveChangesAsync();
-
-//Loop Insert Statement
-
-var newCoach1 = new Coach
-{
-    Name = "Hadi",
-    CreatedDate = DateTime.Now
-};
-List<Coach> coaches = new List<Coach>
-{
-    newCoach,
-    newCoach1
-};
-
-/*foreach(var item in coaches)
-{
-    await context.AddAsync(item);
-}
-Console.WriteLine(context.ChangeTracker.DebugView.LongView);
-await context.SaveChangesAsync();
-Console.WriteLine(context.ChangeTracker.DebugView.LongView);
-
-foreach (var coach in coaches)
-{
-    Console.WriteLine($"{coach.Id} - {coach.Name}");
-}*/
-
-//Batch Insert Statement
-
-/*await context.Coaches.AddRangeAsync(coaches);
-await context.SaveChangesAsync();*/
-
-
-//Update oparation
-
-/*var coach = await context.Coaches.FindAsync(9);
-coach.Name = "Himu Hadi 05";
-coach.CreatedDate = DateTime.Now;
-Console.WriteLine(context.ChangeTracker.DebugView.LongView);
-await context.SaveChangesAsync();
-Console.WriteLine(context.ChangeTracker.DebugView.LongView);*/
-
-/*var coach1 = await context.Coaches.AsNoTracking().FirstOrDefaultAsync(x => x.Id == 10);
-coach1.Name = "Test 16";
-coach1.CreatedDate = DateTime.Now;
-Console.WriteLine(context.ChangeTracker.DebugView.LongView);
-//context.Update(coach1);
-context.Entry(coach1).State = EntityState.Modified;
-Console.WriteLine(context.ChangeTracker.DebugView.LongView);
-await context.SaveChangesAsync();
-Console.WriteLine(context.ChangeTracker.DebugView.LongView);*/
-
-
-/*var coach3 = await context.Coaches.FirstOrDefaultAsync(x => x.Id == 10);
-coach3.Name = "Test 15";
-coach3.CreatedDate = DateTime.Now;
-Console.WriteLine(context.ChangeTracker.DebugView.LongView);
-await context.SaveChangesAsync();
-Console.WriteLine(context.ChangeTracker.DebugView.LongView);*/
-
-//Delete oparation
-/*var coach = await context.Coaches.FindAsync(9);
-//context.Remove(coach);
-context.Entry(coach).State = EntityState.Deleted;
-Console.WriteLine(context.ChangeTracker.DebugView.LongView);
-await context.SaveChangesAsync();
-Console.WriteLine(context.ChangeTracker.DebugView.LongView);*/
-
 // Select all teams
-// await GetAllTeams();
+//await GetAllTeams();
 //await GetAllTeamsQuerySyntax();
 
 // Select one team
-//await GetOneTeam();
+ //await GetOneTeam();
 
 // Select all record that meet a condition
 //await GetFilteredTeams();
@@ -120,62 +47,125 @@ Console.WriteLine(context.ChangeTracker.DebugView.LongView);*/
 //await ListVsQueryable();
 #endregion
 
+#region Write Queries
+
+// Use Console.WriteLine(context.ChangeTracker.DebugView.LongView); to see pending changes
+// Inserting Data 
+/* INSERT INTO Coaches (cols) VALUES (values) */
+
+// Simple Insert
+//await InsertOneRecord();
+
+// Loop Insert
+//await InsertWithLoop();
+
+// Batch Insert
+//await InsertRange();
+
+// Update Operations
+//await UpdateWithTracking();
+//await UpdateNoTracking();
+
+// Delete Operations
+//await DeleteRecord();
+
+// Execute Delete
+//await ExecuteDelete();
+
+// Execute Update
+//await ExecuteUpdate();
+
+#endregion
+
 #region Related Data
-//Insert Record in Foreign Key
-/*var match = new Match
-{
-    AwayTeamId = 1,
-    HomeTeamId = 2,
-    HomeTeamScore = 0,
-    AwayTeamScore = 0,
-    Date = new DateTime(2025, 08, 15),
-    TicketPrice = 20,
-};
-await context.AddAsync(match);
-await context.SaveChangesAsync();
 
-*//* Incorrect reference data  - Will give error*//*
-var match1 = new Match
-{
-    AwayTeamId = 10,
-    HomeTeamId = 0,
-    HomeTeamScore = 0,
-    AwayTeamScore = 0,
-    Date = new DateTime(2025, 08, 15),
-    TicketPrice = 20,
-};
-await context.AddAsync(match1);
-await context.SaveChangesAsync();
-*/
+// Insert record with FK
+//await InsertMatch();
 
-//Insert Parent/Child
+// Insert Parent/Child
+//await InsertTeamWithCoach();
 
-/*var team = new Team
+// Insert Parent with Children
+//await InsertLeagueWithTeams();
+
+// Eager Loading Data
+//await EagerLoadingData();
+
+// Explicit Loading Data
+//await ExplicitLoadingData();
+
+// Lazy Loading
+//await LazyLoadingData();
+
+// Filtering Includes
+// Get all teams and only home matches where they have scored
+//await FilteringIncludes();
+
+// Projects and Anonymous types
+await AnonymousTypesAndRelatedData();
+#endregion
+
+
+async Task InsertMatch()
 {
-    Name = "New Team",
-    Coach = new Coach
+    var match = new Match
     {
-        Name = "Johnson"
-    }
-};
-await context.AddAsync(team);
-await context.SaveChangesAsync();*/
+        AwayTeamId = 1,
+        HomeTeamId = 2,
+        HomeTeamScore = 0,
+        AwayTeamScore = 0,
+        Date = new DateTime(2025, 08, 15),
+        TicketPrice = 20,
+    };
+    await context.AddAsync(match);
+    await context.SaveChangesAsync();
 
-/*var coach = new Coach
-{
-    Name = "New Team2",
-    Team = new Team
+    //Incorrect reference data  - Will give error
+    var match1 = new Match
     {
-        Name = "Johnson2"
-    }
-};
-await context.AddAsync(coach);
-await context.SaveChangesAsync();*/
+        AwayTeamId = 10,
+        HomeTeamId = 0,
+        HomeTeamScore = 0,
+        AwayTeamScore = 0,
+        Date = new DateTime(2025, 08, 15),
+        TicketPrice = 20,
+    };
+    await context.AddAsync(match1);
+    await context.SaveChangesAsync();
+}
 
-/*var league = new League
+async Task InsertTeamWithCoach()
 {
-    Name = "Serie A",
-    Teams = new List<Team>
+    var team = new Team
+    {
+        Name = "New Team",
+        Coach = new Coach
+        {
+            Name = "Johnson"
+        }
+    };
+    await context.AddAsync(team);
+    await context.SaveChangesAsync();
+
+    /*var coach = new Coach
+    {
+        Name = "New Team2",
+        Team = new Team
+        {
+            Name = "Johnson2"
+        }
+    };
+    await context.AddAsync(coach);
+    await context.SaveChangesAsync();*/
+
+}
+
+async Task InsertLeagueWithTeams()
+{
+    var league = new League
+    {
+        Name = "Serie A",
+        Teams = new List<Team>
                 {
                     new Team
                     {
@@ -202,59 +192,101 @@ await context.SaveChangesAsync();*/
                         },
                     }
                 }
-};
-await context.AddAsync(league);
-await context.SaveChangesAsync();*/
-#endregion
+    };
+    await context.AddAsync(league);
+    await context.SaveChangesAsync();
+}
 
-#region Eager Loding Data
-/*var leauges = await context.Leagues
+async Task EagerLoadingData()
+{
+    var leauges = await context.Leagues
     .Include(q => q.Teams)
         .ThenInclude(q => q.Coach)
     .ToListAsync();
 
-foreach (var league in leauges)
-{
-    Console.WriteLine($"Leauge- {league.Name}");
-    foreach (var team in league.Teams)
+    foreach (var league in leauges)
     {
-        Console.WriteLine($"{team.Name} - {team.Coach.Name}");
+        Console.WriteLine($"Leauge- {league.Name}");
+        foreach (var team in league.Teams)
+        {
+            Console.WriteLine($"{team.Name} - {team.Coach.Name}");
+        }
     }
-}*/
-#endregion
-
-#region Explicit Loding Data
-/*var leauges = await context.FindAsync<League>(1);
-if (!leauges.Teams.Any())
-{
-    Console.WriteLine("Team have not been loaded");
 }
 
-context.Entry(leauges).Collection(q => q.Teams).Load();
-if (leauges.Teams.Any())
+async Task ExplicitLoadingData()
 {
+    var leauges = await context.FindAsync<League>(1);
+    if (!leauges.Teams.Any())
+    {
+        Console.WriteLine("Team have not been loaded");
+    }
+
+    context.Entry(leauges).Collection(q => q.Teams).Load();
+    if (leauges.Teams.Any())
+    {
+        foreach (var team in leauges.Teams)
+        {
+            Console.WriteLine($"{team.Name}");
+        }
+    }
+}
+
+async Task LazyLoadingData()
+{
+    var leauges = await context.FindAsync<League>(1);
     foreach (var team in leauges.Teams)
     {
         Console.WriteLine($"{team.Name}");
     }
-}*/
-#endregion
 
-#region Lezy Loding Data
-/*var leauges = await context.FindAsync<League>(1);
-foreach (var team in leauges.Teams)
-{
-    Console.WriteLine($"{team.Name}");
-}*/
-
-/*foreach (var leauges in context.Leagues)
-{
-    foreach (var team in leauges.Teams)
+   /* foreach (var leauges in context.Leagues)
     {
-        Console.WriteLine($"{team.Name}- {team.Coach.Name}");
+        foreach (var team in leauges.Teams)
+        {
+            Console.WriteLine($"{team.Name}- {team.Coach.Name}");
+        }
+    }*/
+}
+
+async Task FilteringIncludes()
+{
+    var teams = await context.Teams
+        .Include("Coach")
+        //.Include(q => q.HomeMatches)
+        .Include(q => q.HomeMatches.Where(q => q.HomeTeamScore > 0))
+        .ToListAsync();
+
+    foreach (var team in teams)
+    {
+        Console.WriteLine($"{team.Name} - {team.Coach.Name}");
+        foreach (var match in team.HomeMatches)
+        {
+            Console.WriteLine($"Score - {match.HomeTeamScore}");
+        }
     }
-}*/
-#endregion
+}
+
+async Task AnonymousTypesAndRelatedData()
+{
+    var teams = await context.Teams
+    .Select(q => new TeamDetails
+    {
+        TeamId = q.Id,
+        TeamName = q.Name,
+        CoachName = q.Coach.Name,
+        TotalHomeGoals = q.HomeMatches.Sum(x => x.HomeTeamScore),
+        TotalAwayGoals = q.AwayMatches.Sum(x => x.AwayTeamScore),
+    })
+    .ToListAsync();
+
+    foreach (var team in teams)
+    {
+        Console.WriteLine($"{team.TeamName} - {team.CoachName} | Home Goals: {team.TotalHomeGoals} | Away Goals: {team.TotalAwayGoals}");
+    }
+
+}
+
 async Task ListVsQueryable()
 {
     Console.WriteLine("Enter '1' for Team with Id 1 or '2' for teams that contain 'F.C.'");
@@ -295,6 +327,108 @@ async Task ListVsQueryable()
     {
         Console.WriteLine(t.Name);
     }
+}
+async Task InsertOneRecord()
+{
+    var newCoach = new Coach
+    {
+        Name = "Jose Mourinho",
+        CreatedDate = DateTime.Now,
+    };
+    await context.Coaches.AddAsync(newCoach);
+    await context.SaveChangesAsync();
+}
+
+async Task InsertWithLoop()
+{
+    var newCoach = new Coach
+    {
+        Name = "Jose Mourinho",
+        CreatedDate = DateTime.Now,
+    };
+    var newCoach1 = new Coach
+    {
+        Name = "Theodore Whitmore",
+        CreatedDate = DateTime.Now,
+    };
+    List<Coach> coaches = new List<Coach>
+    {
+        newCoach1,
+        newCoach
+    };
+    foreach (var coach in coaches)
+    {
+        await context.Coaches.AddAsync(coach);
+    }
+    Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+    await context.SaveChangesAsync();
+    Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+
+    foreach (var coach in coaches)
+    {
+        Console.WriteLine($"{coach.Id} - {coach.Name}");
+    }
+}
+
+async Task InsertRange()
+{
+    var newCoach = new Coach
+    {
+        Name = "Jose Mourinho",
+        CreatedDate = DateTime.Now,
+    };
+    var newCoach1 = new Coach
+    {
+        Name = "Theodore Whitmore",
+        CreatedDate = DateTime.Now,
+    };
+    List<Coach> coaches = new List<Coach>
+    {
+        newCoach1,
+        newCoach
+    };
+    await context.Coaches.AddRangeAsync(coaches);
+    await context.SaveChangesAsync();
+}
+
+async Task UpdateWithTracking()
+{
+    // Find uses tracking
+    var coach = await context.Coaches.FindAsync(9);
+    coach.Name = "Trevoir Williams";
+    coach.CreatedDate = DateTime.Now;
+    Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+    await context.SaveChangesAsync();
+    Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+
+}
+
+async Task UpdateNoTracking()
+{
+    // We cannot use find with no tracking enabled, so we look for the FirstOrDefault()
+    var coach1 = await context.Coaches
+        .AsNoTracking()
+        .FirstOrDefaultAsync(q => q.Id == 10);
+    coach1.Name = "Testing No Tracking Behavior - Entity State Modified";
+
+    // We can either call the Update() method or change the Entity State manually
+    Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+    //context.Update(coach1);
+    context.Entry(coach1).State = EntityState.Modified;
+    Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+    await context.SaveChangesAsync();
+    Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+}
+
+async Task DeleteRecord()
+{
+    /* DELETE FROM Coaches WHERE Id = 1 */
+    var coach = await context.Coaches.FindAsync(10);
+    // context.Remove(coach);
+    context.Entry(coach).State = EntityState.Deleted;
+    Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+    await context.SaveChangesAsync();
+    Console.WriteLine(context.ChangeTracker.DebugView.LongView);
 }
 
 async Task NoTracking()
@@ -526,4 +660,14 @@ class TeamInfo
 {
     public int TeamId { get; set; }
     public string Name { get; set; }
+}
+
+class TeamDetails
+{
+    public int TeamId { get; set; }
+    public string TeamName { get; set; }
+    public string CoachName { get; set; }
+
+    public int TotalHomeGoals { get; set; }
+    public int TotalAwayGoals { get; set; }
 }
