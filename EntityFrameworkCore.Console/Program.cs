@@ -19,7 +19,7 @@ using var context = new FootballLeagueDbContext();
 //await GetAllTeamsQuerySyntax();
 
 // Select one team
- //await GetOneTeam();
+//await GetOneTeam();
 
 // Select all record that meet a condition
 //await GetFilteredTeams();
@@ -102,10 +102,35 @@ using var context = new FootballLeagueDbContext();
 //await FilteringIncludes();
 
 // Projects and Anonymous types
-await AnonymousTypesAndRelatedData();
+//await AnonymousTypesAndRelatedData();
 #endregion
 
+#region Raw SQL
 
+// Querying a Keyless Entity
+await QueryingKeylessEntityOrView();
+
+// Executing Raw SQL Safely
+//ExecutingRawSql();
+
+
+// Mixing with LINQ
+//RawSqlWithLinq();
+
+// Executing Stored Procedures
+//OtherRawQueries();
+
+
+#endregion
+
+async Task QueryingKeylessEntityOrView()
+{
+    var teams = await context.TeamsAndLeaguesView.ToListAsync();
+    foreach (var team in teams)
+    {
+        Console.WriteLine($"{team.Name} - {team.LeagueName}");
+    }
+}
 async Task InsertMatch()
 {
     var match = new Match
