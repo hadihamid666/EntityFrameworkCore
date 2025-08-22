@@ -1,5 +1,6 @@
 ﻿using EntityFrameworkCore.Data;
 using EntityFrameworkCore.Domain;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
 // First we need an instance of context
@@ -108,7 +109,7 @@ using var context = new FootballLeagueDbContext();
 #region Raw SQL
 
 // Querying a Keyless Entity
-await QueryingKeylessEntityOrView();
+//await QueryingKeylessEntityOrView();
 
 // Executing Raw SQL Safely
 //ExecutingRawSql();
@@ -122,7 +123,68 @@ await QueryingKeylessEntityOrView();
 
 
 #endregion
+void OtherRawQueries()
+{
+    // Executing Stored Procedures
+    var leagueId = 1;
+    var league = context.Leagues
+        .FromSqlInterpolated($"EXEC dbo.StoredProcedureToGetLeagueNameHere {leagueId}");
 
+    // Non-querying statement 
+    var someName = "Random Team Name";
+    //context.Database.ExecuteSqlInterpolated($"UPDATE Teams SET Name = {someName}");
+
+    int matchId = 1;
+    //context.Database.ExecuteSqlInterpolated($"EXEC dbo.DeleteMatch {matchId}");
+
+    // Query Scalar or Non-Entity Type
+    var leagueIds = context.Database.SqlQuery<int>($"SELECT Id FROM Leagues")
+        .ToList();
+
+    // Execute User-Defined Query
+    var earliestMatch = context.GetEarliestTeamMatch(1);
+}
+
+
+void RawSqlWithLinq()
+{
+    var teamsList = context.Teams.FromSql($"SELECT * FROM Teams")
+    .Where(q => q.Id == 1)
+    .OrderBy(q => q.Id)
+    .Include("League")
+    .ToList();
+
+    foreach (var t in teamsList)
+    {
+        Console.WriteLine(t);
+    }
+}
+void ExecutingRawSql()
+{
+    // FromSqlRaw()
+    Console.WriteLine("Enter Team Name: ");
+    var teamName = Console.ReadLine();
+    var teamNameParam = new SqliteParameter("teamName", teamName);
+    var teams = context.Teams.FromSqlRaw($"SELECT * FROM Teams WHERE name = @teamName", teamNameParam);
+    foreach (var t in teams)
+    {
+        Console.WriteLine(t);
+    }
+
+    // FromSql()
+    teams = context.Teams.FromSql($"SELECT * FROM Teams WHERE name = {teamName}");
+    foreach (var t in teams)
+    {
+        Console.WriteLine(t);
+    }
+
+    // FromSqlInterpolated
+    teams = context.Teams.FromSqlInterpolated($"SELECT * FROM Teams WHERE name = {teamName}");
+    foreach (var t in teams)
+    {
+        Console.WriteLine(t);
+    }
+}
 async Task QueryingKeylessEntityOrView()
 {
     var teams = await context.TeamsAndLeaguesView.ToListAsync();
@@ -309,6 +371,23 @@ async Task AnonymousTypesAndRelatedData()
     {
         Console.WriteLine($"{team.TeamName} - {team.CoachName} | Home Goals: {team.TotalHomeGoals} | Away Goals: {team.TotalAwayGoals}");
     }
+
+    //AnonymousTypes
+    /*var teams2 = await context.Teams
+    .Select(q => new 
+    {
+        TeamId = q.Id,
+        TeamName = q.Name,
+        CoachName = q.Coach.Name,
+        TotalHomeGoals = q.HomeMatches.Sum(x => x.HomeTeamScore),
+        TotalAwayGoals = q.AwayMatches.Sum(x => x.AwayTeamScore),
+    })
+    .ToListAsync();
+
+    foreach (var team in teams2)
+    {
+        Console.WriteLine($"{team.TeamName} - {team.CoachName} | Home Goals: {team.TotalHomeGoals} | Away Goals: {team.TotalAwayGoals}");
+    }*/
 
 }
 
